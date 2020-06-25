@@ -81,13 +81,13 @@
 
 \begin{document}
 
-\title[]{\textbf{Adaptive Model for Network Resources Prediction in Modern Internet Service Providers}}  
+\title[]{\textbf{MODELO ADAPTATIVO PARA PREVISÃO DE DEMANDA POR RECURSOS DE REDE EM PROVEDORES DE INTERNET MODERNOS}}  
 
-\author[Dyego Oliveira]{Dyego Oliveira, Francisco M. V. Filho, Thelmo P. de Araujo, \\ Joaquim Celestino Jr. and Rafael L. Gomes}
+\author[Dyego Oliveira]{Dyego Henrique Leonel Oliveira}
 
 \institute{Universidade Estadual do Ceará (UECE)}
 
-\date{May 2020} 
+\date{Julho 2020} 
 
 \begin{frame}
 \titlepage
@@ -105,41 +105,55 @@
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
+\section{Introdução}
 
 %%%%%%%%%%%%
 
 \subsection{}
 \begin{frame}
-\frametitle{Introduction}
+\frametitle{Introdução}
 % \small
-\begin{block}{Context}
+\begin{block}{Contexto}
     \begin{itemize}
-        \item The Internet has become an essential entity in our lives, because modern computer services operate through it.
-        \item Most of these services are based on Internet Access Service (IAS) through an Internet Service Provider (ISP).
+        \item A Internet tem se tornado uma ferramenta crucial em nossas vidas, pelos serviços modernos de comptuação que operam sobre.
+        \item A maioria desses serviços são baseados em:
+        \begin{itemize}
+            \item Service Level Agreement -- SLA
+            \item Internet Access Service -- IAS
+        \end{itemize}
+        \item Operando através o Internet Service Provider (ISP)
     \end{itemize}
 \end{block}
 
-\begin{block}{Challenges}
+
+\end{frame}
+%%%%%%%%%%%%
+\subsection{}
+\begin{frame}{Introdução}
+    \begin{block}{Desafios}
 \begin{itemize}
-    \item All types of networks seek characteristics such as: low delay, flexibility and resilience. These characteristics influence the quality of service (QoS) and the quality of experience (QoE) of end users.
-    \item It is necessary to evolve resource management, network flexibility and personalization of the behavior of network infrastructures.
+    \item Todos os tipos de redes buscam por características tais como:
+    \begin{itemize}
+        \item baixo atraso;
+        \item flexibilidade;
+        \item resiliência;
+    \end{itemize}
+    \item Pontos necessários para evoluir o gerenciamento de recursos, flexibilidade, bandwidth e poder personalizar o comportamento de infraestruturas das redes.
 \end{itemize}
 \end{block}
 \end{frame}
-
 %%%%%%%%%%%%
 
 \subsection{}
 \begin{frame}
-\frametitle{Introduction}
+\frametitle{Introdução}
 % \small
-\begin{block}{Elastic demand}
+\begin{block}{MISPs e Demanda Elastica}
     \begin{itemize}
-        \item Human mobility in cities results in an elastic demand for network resources throughout the day.
-        \item ISPs tend to evolve into MISPs (Modern Internet Service Providers), addressing situations such as the elastic demand for network resources that can cause problems of slowness, interruption of services and constant disconnections.
-        \item Os MISPs need to expand or to shrink the bandwidth allocation dynamically (elastic behavior), allowing a suitable on demand IAS.
-        \item One promising approach for MISPs is the deployment of network slices. Each network slice can have the most suitable configuration to better meet the client’s requirements.
+    \item ISPs tendem a evoluir para MISPs (Modern Internet Service Providers), abordando situações como demanda elástica por recursos de rede. 
+    \item Os MISPs precisam expandir ou reduzir dinamicamente a alocação de largura de banda (comportamento elástico), permitindo um IAS adequado sob demanda. Evitando problemas de lentidão, interrupção e desconecções. 
+    \item Uma abordagem promissora para os MISPs são o desenvolvimento de fatias de redes (slices). Cada fatia pode ter a configuração adequada para melhor atender as necessidades do cliente.
+    \item Uma abordagem promisora para lidar com (slices) é o uso de Previsão de Tráfego de Rede.
     \end{itemize}
 \end{block}
 \end{frame}
@@ -148,7 +162,7 @@
 
 \subsection{}
 \begin{frame}
-\frametitle{Introduction}
+\frametitle{Introdução}
 % \small
 \begin{block}{Traffic prediction model}
     \begin{itemize}
@@ -185,6 +199,22 @@
         \end{itemize}
     \end{itemize}
 \end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fundamentação Teórica}
+\subsection{}
+
+\begin{frame}{Série Temporal}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Frame Title}
+    
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
