@@ -133,7 +133,7 @@
     \begin{block}{Desafios}
 \begin{itemize}
     \item Todos os tipos de redes buscam por características tais como:
-    \begin{itemize}
+    \begin{itemize}\setbeamertemplate{itemize items}[triangle]
         \item baixo atraso;
         \item flexibilidade;
         \item resiliência;
@@ -164,12 +164,12 @@
 \begin{frame}
 \frametitle{Introdução}
 % \small
-\begin{block}{Traffic prediction model}
+\begin{block}{Modelo de previsão de tráfego}
     \begin{itemize}
     \item A análise do histórico de uso dos recursos de rede permite o entendimento do seu comportamento.
         \item Este conhecimento permite a aplicação de tarefas proativas para evitar problemas citados anteriormente e planejar a infraestrutura.
-        \item Traditional traffic prediction models lack adaptability to keep up with changes in the behavior of observations.
-        \item MISPs need a model that performs adaptive forecasting to deal with the elastic demand arising from clients behavior.
+        \item Os MISPs precisam de um modelo que aprenda o comportamento da rede \textbf{Bandwidth} e auxilie as técnicas de predição nos cenários de (slicing).
+        \item A abordagem seria a -- Previsão de Rede Adaptável -- \textbf{PRA} .
     \end{itemize}
 \end{block}
 \end{frame}
@@ -205,35 +205,115 @@
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fundamentação Teórica}
+
 \subsection{}
+\begin{frame}{Série Temporal}
+\begin{block}{Definição}
+
+    \begin{itemize}
+        \item Uma sequência de (\textbf{observações}) de uma variável ao longo do tempo.
+        \begin{itemize}\setbeamertemplate{itemize items}[triangle]
+            \item ex. Total de tráfego de rede por \textbf{dia}, \textbf{hora} ou \textbf{mês}.
+        \end{itemize}
+        \item Componentes:
+        \begin{itemize}\setbeamertemplate{itemize items}[triangle]
+            \item \underline{total} --> Medida      \item \underline {tráfego de rede} --> Fato
+            \item \underline{por dia} --> Unidade de Tempo.
+        \end{itemize}
+        \end{itemize}
+    \end{block}  
+\end{frame}
 
 \begin{frame}{Série Temporal}
+\begin{block}{Características}
+        \begin{itemize}
+            \item Autocorrelação.
+            \begin{equation}
+            Y_{t} \dots e \dots Y_{t - 1}
+            \end{equation}
+            \item Decomposição:
+                \begin{itemize}\setbeamertemplate{itemize items}[triangle]
+                    \item Sazonalidade;
+                    \item Tendência;
+                        \begin{itemize}\setbeamertemplate{itemize items}[square]\small
+                            \item Estacionária;
+                            \item Não Estacionária.
+                        \end{itemize}
+                    \item Ciclo;
+                    \item Erro.
+                \end{itemize}
+        \end{itemize}
+        \end{block}
+\end{frame}
+
+
+\begin{frame}{Série Temporal}
+\begin{block}{Métrica de Desempenho}
     \begin{itemize}
-        \item 
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Frame Title}
+        \item Hold Out -- os dados são divididos em duas partes não sobrepostas, treinamento e teste.
+        \end{itemize}
     
+\end{block}
+    \centering
+\includegraphics[width=0.62\textwidth,angle=0]{holdout.pdf}
 \end{frame}
 
+\begin{frame}{Série Temporal}
+\begin{block}{Métrica de Erro}
+    \begin{itemize}
+        \item erro quadrático médio da raiz (Root Mean Squared Error - RMSE) observa a média quadrática da diferença entre o previsto e o observado.
+        \end{itemize}
+    
+\end{block}
+\begin{equation}
+RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}    
+\end{equation}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Related Work}
+\section{Trabalhos Relacionados}
 
 \subsection{}
 \begin{frame}
 
-\frametitle{Related Work}
+\frametitle{Trabalhos Relacionados}
 
-\includegraphics[width=0.99\textwidth,angle=0]{tableRelatedWork.png}
-
-\begin{itemize}\footnotesize
-    \item No paper in the literature focused on the design of an adaptive bandwidth prediction model for elastic demand in MISPs.
-    \item To improve the prediction process, our proposal performs several tasks that create a standardized sample model that evolves the prediction process of existing techniques, reducing the computational time to create the models, as well as their accuracy.
+%\includegraphics[width=0.99\textwidth,angle=0]{tableRelatedWork.png}
+\begin{table}[h!]	
+	\centering
+    %\Caption{\label{tab:trabalhosRelacionados} Trabalhos Relacionados}
+   	\resizebox{\textwidth}{!}{		
+	%\UECEtab{}{
+		\normalsize
+		\begin{tabular}{cll}
+			\toprule
+			
+			\large Referência & \large Estratégia & \large Foco \\
+			\midrule \midrule
+			Bayati et al. {Bayati.2018} &Escalas de tempo usando GPR & Previsão de várias etapas à frente \\ 
+			Hou et al. {Hou.2018} &Método de Neyman-Pearson&Reserva de Bw\\ 
+			Ruan et al. {Ruan.2018} &Alocação de Bw preditiva&Minimização de atraso do \textit{Upstream}\\ 
+			Wang et al. {Wang.2018} &ARIMA e ARCH &Mitigação de ataques DoS\\ 
+			Yoo et al. {Yoo.2015} &ARIMA e STL &Utilização de recursos e escalonamento\\
+			Aldhyani et al. {Aldhyani.2016} &Agrupamento suave e séries temporais&Previsão de tráfego de video\\
+			Katris et al. {Katris.2019} &FARIMA e GARCH com redes neurais& Predição de tráfego de video\\
+			
+			Harstead et al. {Harstead.2015} &Técnicas estatísticas para quantificação&Planejamento de infraestrutura de rede\\
+			Este Trabalho & Modelo Adaptativo & Predição de Recursos em Demanda Elástica \\
+			\bottomrule
+		\end{tabular}
+	%}
+}
+\end{table}
+\begin{block}{}
+\begin{itemize}\footnotesize%\small 
+    \item Não foi encontrado na literatura artigos que sugeriram modelo de previsão de \emph{Bandwidth} em \emph{Slices} para MISPs.
+    \item O PRA executa tarefas que melhora a padronização das amostras evoluindo a previsão das técnicas tradicionais, reduzindo tempo computacional de treinamento e taxa de erros, consequêntemente. 
 \end{itemize}
+\end{block}
+
 
 \end{frame}
 
@@ -241,7 +321,7 @@
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Proposal}
+\section{Proposta}
 
 %%%%%%%%%%%%
 
