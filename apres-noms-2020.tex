@@ -176,31 +176,6 @@
 
 %%%%%%%%%%%%
 
-\subsection{}
-\begin{frame}
-\frametitle{Introdução}
-% \small
-\begin{block}{Proposal: ANP}
-    \begin{itemize}
-        \item Adaptive Network Prediction (ANP).
-        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\small
-        	\item The ANP model allows for an adequate allocation of network resources and strategic planning of its infrastructure.
-            \item Goals:
-            \begin{itemize}\setbeamertemplate{itemize items}[square]\small
-            	\item Adapt the utilization of distinct means of bandwidth for cycles intervals.
-            	\item Perform a sequence of adjustments to reach suitable values of generalization.
-            \end{itemize}
-        \end{itemize}
-        \item Through ARIMA and NNAR, the ANP makes adjustments in seasonality, trend and removes error cycles in the time series.
-        \item Experiments and results:
-        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\small
-        	\item The experiments were carried out using a six-month real bandwidth demand data set from the Universidade Estadual do Ceará (UECE - Brazil).
-        	\item Minimizes the error rate of the predicted values, reaching 30\% improvement when compared to the existing network forecast models.
-        \end{itemize}
-    \end{itemize}
-\end{block}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -320,11 +295,68 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Proposta}
+%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{frame}{Proposta}
+    \begin{block}{Previsão de Rede Adaptável - PRA}
+        \begin{itemize}
+            \item O modelo PRA proposto tem por objetivo ajustar o conjunto de dados referente à utilização de largura de banda para situações de demanda elástica;
+            \begin{itemize}\setbeamertemplate{itemize items}[square]\footnotesize
+                \item Etapa prévia a submissão dos dados às Técnicas Preditivas; 
+            \end{itemize}
+            \item As técnicas existentes (\textbf{Arima/Neural}), tentam lidar com aspéctos de Sazonalidade e Tendência, não obtendo correções \underline{satisfatórias};
+            
+            
+        \end{itemize}
+    \end{block}
+    %%%%%%%%%%
+    \begin{block}{Ajustes PRA}
+    \begin{itemize}
+        \item Entrada de dados \emph{(bps, Mbps, etc)}
+    
+        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\footnotesize
+            \item Decompõe;
+            \item Remove Ciclos e (irregulares);
+            \item Estacionariedade;
+            
+        \end{itemize}
+        \item Saída de \textbf{dados} tratados;
+        \begin{itemize}\setbeamertemplate{itemize items}[square]\footnotesize
+            \item Submissão as técnicas de Predição 
+        \end{itemize}
+        .
+    \end{itemize}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{}
+\begin{frame}
+\frametitle{Proposta}
+\begin{block}{PRA}
+    \begin{itemize}
+        \item Previsão de Rede Adaptável (PRA).
+        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\small
+        	\item The ANP model allows for an adequate allocation of network resources and strategic planning of its infrastructure.
+            \item Goals:
+            \begin{itemize}\setbeamertemplate{itemize items}[square]\small
+            	\item Adapt the utilization of distinct means of bandwidth for cycles intervals.
+            	\item Perform a sequence of adjustments to reach suitable values of generalization.
+            \end{itemize}
+        \end{itemize}
+        \item Through ARIMA and NNAR, the ANP makes adjustments in seasonality, trend and removes error cycles in the time series.
+        \item Experiments and results:
+        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\small
+        	\item The experiments were carried out using a six-month real bandwidth demand data set from the Universidade Estadual do Ceará (UECE - Brazil).
+        	\item Minimizes the error rate of the predicted values, reaching 30\% improvement when compared to the existing network forecast models.
+        \end{itemize}
+    \end{itemize}
+\end{block}
+\end{frame}
 %%%%%%%%%%%%
-
 \subsection{}
 \begin{frame}
 \frametitle{ANP Model}
