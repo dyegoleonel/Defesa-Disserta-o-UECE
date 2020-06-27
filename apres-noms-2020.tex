@@ -299,9 +299,9 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 %%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{frame}{Proposta}
-    \begin{block}{Previsão de Rede Adaptável - PRA}
-        \begin{itemize}
-            \item O modelo PRA proposto tem por objetivo ajustar o conjunto de dados referente à utilização de largura de banda para situações de demanda elástica;
+    \begin{block}{Previsão de Rede Adaptável -- PRA}
+        \begin{itemize}\small
+            \item O modelo PRA proposto tem por objetivo ajustar o conjunto de dados referente à utilização de \textbf{Bandwidth} para situações de demanda elástica;
             \begin{itemize}\setbeamertemplate{itemize items}[square]\footnotesize
                 \item Etapa prévia a submissão dos dados às Técnicas Preditivas; 
             \end{itemize}
@@ -312,7 +312,7 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
     \end{block}
     %%%%%%%%%%
     \begin{block}{Ajustes PRA}
-    \begin{itemize}
+    \begin{itemize}\small
         \item Entrada de dados \emph{(bps, Mbps, etc)}
     
         \begin{itemize}\setbeamertemplate{itemize items}[triangle]\footnotesize
@@ -322,9 +322,9 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
             
         \end{itemize}
         \item Saída de \textbf{dados} tratados;
-        \begin{itemize}\setbeamertemplate{itemize items}[square]\footnotesize
-            \item Submissão as técnicas de Predição 
-        \end{itemize}
+        %\begin{itemize}\setbeamertemplate{itemize items}[square]\footnotesize
+         %   \item Submissão as técnicas de Predição 
+        %\end{itemize}
         .
     \end{itemize}
     \end{block}
@@ -332,85 +332,148 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
 
-\subsection{}
 \begin{frame}
-\frametitle{Proposta}
-\begin{block}{PRA}
-    \begin{itemize}
-        \item Previsão de Rede Adaptável (PRA).
-        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\small
-        	\item The ANP model allows for an adequate allocation of network resources and strategic planning of its infrastructure.
-            \item Goals:
-            \begin{itemize}\setbeamertemplate{itemize items}[square]\small
-            	\item Adapt the utilization of distinct means of bandwidth for cycles intervals.
-            	\item Perform a sequence of adjustments to reach suitable values of generalization.
-            \end{itemize}
-        \end{itemize}
-        \item Through ARIMA and NNAR, the ANP makes adjustments in seasonality, trend and removes error cycles in the time series.
-        \item Experiments and results:
-        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\small
-        	\item The experiments were carried out using a six-month real bandwidth demand data set from the Universidade Estadual do Ceará (UECE - Brazil).
-        	\item Minimizes the error rate of the predicted values, reaching 30\% improvement when compared to the existing network forecast models.
-        \end{itemize}
-    \end{itemize}
-\end{block}
-\end{frame}
-%%%%%%%%%%%%
-\subsection{}
-\begin{frame}
-\frametitle{ANP Model}
-\begin{block}{Behavior}
+\frametitle{Modelo PRA -- Decomposição}
+\begin{block}{Comportamento -- PRA}
     \begin{itemize}\small
-    \item The ANP model aims to adjust the data referring to the use of bandwidth to the elastic demand scenarios, allowing a better performance of the existing prediction techniques.
-    %\item Essas técnicas lidam com questões de sazonalidade e tendência, mas geralmente não atingem fatores de correção adequados, deixando de prever o comportamento dos dados adequadamente, especialmente em situações de demanda elástica.
-    %\item These techniques deal with seasonality and trend issues, but usually they do not attain suitable correction factors, failing to predict the data behavior properly, specially in elastic demand situations.
-    \item The ANP model performs the following tasks sequentially:
-    \begin{itemize}\setbeamertemplate{itemize items}[triangle]
-        \item Data decomposition.
-        \item Stationarity test. 
-        \item Cycles removal.
+    \item Após ser pré-processado pelo \emph{PRA} os dados podem ser submetidos as técnicas de predição, como mostra a figura abaixo. 
     \end{itemize}
-    \item After being preprocessed by the ANP model, data may be processed a chosen prediction technique. The following figure illustrates the ANP execution process.
+\end{block}
+\centering
+\includegraphics[width=1\textwidth,angle=0]{Modelo-PRA}
+\begin{block}{Execução -- PRA}
+    \begin{itemize}\small
+    \item Flutuações sazonais e tendência não variando com o nível da Série;
+    \item Seleção do modelo Aditivo;
     \end{itemize}
 \end{block}
 
-\centering
-\includegraphics[width=0.8\textwidth,angle=0]{ANPModel.png}
-
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{frame}
+\frametitle{Sequência PRA -- Ciclos}
+\begin{block}{Execução -- PRA}
+    \begin{itemize}
+        \item Os experimentos foram retirados da (UECE), uma base de dados real do consumo \textbf{Bandwidth}, monitorados por 6 (seis) meses.
+        \item As técnicas escolhidas para predição foram \textbf{ARIMA} e \textbf{NNAR}.
+        \end{itemize}
+\end{block}
+ \begin{block}{Execução -- PRA}
+        \begin{itemize}\setbeamertemplate{itemize items}[triangle]
+            \item Média móvel de ordem \emph{24} é aplicado para analisar a tendência;
+            \item Aplicação ao algoritmo de remoção de ciclos (amostras de baixa amplitude);
+            \item Decomposição sazonal e de tendência usando Loess (STL).
+        \end{itemize}
+        \end{block}
+\end{frame}
 %%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%
+\subsection{}
+\begin{frame}
+\frametitle{Proposta}
 
-\section{Results}
+        \centering
+\includegraphics[width=0.7\textwidth,angle=0]{myts_avg_eps.eps}
+\end{frame}
+%%%%%%%%%%
+\subsection{}
+\begin{frame}
+\frametitle{Proposta}
+
+        \centering
+\includegraphics[width=0.7\textwidth,angle=0]{mytsClean.eps}
+\end{frame}
+
+\subsection{}
+\begin{frame}
+\frametitle{Proposta}
+
+        \centering
+\includegraphics[width=0.75\textwidth,angle=0]{cicloOrig_Ajustado.eps}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{frame}
+\frametitle{Validação Cruzada}
+\small
+\begin{block}{Preparando dados para treinamento}
+\begin{itemize} \small
+    \item Separação dos dados de Ciclos Ajustados.
+    \item Um período de 24 horas define um ciclo; portanto, todo o conjunto de dados é composto por 4320 ciclos.
+\end{itemize}
+\end{block}
+
+\begin{block}{Treinando e testando as amostras}
+\begin{itemize} \small
+    \item A técnica de Validação Cruzada de Série Temporal (TSCV) foi aplicado aos dados;
+    \item O método \textbf{\textit{Hold Out}} foi usado para selecionar os subconjuntos de Treinamento e Teste.
+    \item Foi aplicado às primeiras 72 amostras como conjunto de treinamento, às segundas 144 amostras para o treinamento e assim por diante (72, 144, 216,...).
+\end{itemize}
+\end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{}
+\begin{frame}
+\frametitle{Sequência PRA -- Estacionariedade}
+\begin{block}{Execução -- PRA}
+    \begin{itemize}
+        \item Verificar Comportamento a longo prazo;
+        \item Série pode apresentar mudança de nível (inclinações etc.)
+        \item Não interferir na capacidade de predição das técnicas;
+            \begin{itemize}\setbeamertemplate{itemize items}[triangle]
+                \item \textbf{Kwiatkowski-Phillips-Schmidt-Shin} -- (KPSS)
+                \item \textbf{Argumented Dickey-Fuller} (DICKEY-FULLER)
+                    \begin{itemize}\setbeamertemplate{itemize items}[square]
+                    \item Aplicação de direrenciações;
+                        \begin{equation}
+                             Y_{t} = Z_{t} - Z_{t-1}
+                         \end{equation}
+                    \end{itemize}
+            \end{itemize}
+        \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Resultados}
 
 %%%%%%%%%%%%
 
 \subsection{}
 \begin{frame}
-\frametitle{Results}
-\small
-\begin{block}{Workload}
+\frametitle{Resultados}
+
+\begin{block}{Comparação}
 \begin{itemize} \small
-    \item The dataset used described the bandwidth usage of the central backbone of the UECE.
-    \item The data was collected through real time network monitoring every 60 minutes, during six months. A period of 24 hours defines a cycle, so, all the dataset is composed by 4320 cycles.
+    \item O \textbf{PRA} é utilizado como etapa anterior à aplicação da técnica de previsão.
+    \item Para medir os benefícios do \textbf{PRA} na capacidade de modelagem e predição das técnicas \textbf{ARIMA} e \textbf{NNAR}, comparamos seu desempenho com e sem a aplicação do mesmo.
+    \item A métrica para avaliar a performance da proposta no período \textbf{T} foi a Root Mean Squared Error (RMSE).
 \end{itemize}
 \end{block}
 
-\begin{block}{Training and test samples}
+\begin{block}{\textit{Autocorrelation Function} -
+ACF}
 \begin{itemize} \small
-    \item The technique Time Series Cross-Validation (TSCV) was applied due to the dependency of the time series.
-    \item The TSCV was used to model the samples in order to input them for prediction.
-    \item The HoldOut method was used to select the subsets of Training and Test.
-    \item We applied first 72 samples as training set, second 144 samples for the training and so on (72, 144, 216, . . . ).
+    \item Aplicado a todos os conjuntos de Treinamento;
+    \item Aplicado aos Resíduos;
 \end{itemize}
 \end{block}
+ 
 \end{frame}
 
 %%%%%%%%%%%%
@@ -455,7 +518,7 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \centering
 \begin{figure}[!htb]
 \centering
-\includegraphics[height=0.35\textwidth,angle=0]{figura6.png}
+\includegraphics[height=0.37\textwidth,angle=0]{rmse_PRA_original_juntos-eps-converted-to.pdf}
 \end{figure}
 
 \end{frame}
@@ -481,7 +544,7 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \centering
 \begin{figure}[!htb]
 \centering
-\includegraphics[height=0.7\textwidth,angle=0]{figura7.png}
+\includegraphics[height=0.62\textwidth,angle=0]{melhoresCiclos3_3-eps-converted-to.pdf}
 \end{figure}
 \end{column}%
 \end{columns}
@@ -489,7 +552,22 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \end{frame}
 
 %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{}
+\begin{frame}{Resultados}
+    \centering
+\includegraphics[height=0.50\textwidth,angle=0]{rmse_tsoriginal.eps}
+\end{frame}
+
+
+\subsection{}
+\begin{frame}{Resultados}
+    \centering
+\includegraphics[height=0.50\textwidth,angle=0]{rmse_tsclean.eps}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -526,20 +604,17 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 
 \subsection{}
 \begin{frame}
-\frametitle{Thank you !}
+\frametitle{Obrigado!}
 % \small
 
-\begin{block}{Acknowledgment}\small
-The authors would like to thank FUNCAP, CAPES and
-CNPq for their financial support.
+\begin{block}{Agradecimentos}\small
+À banca, examinadora desta apresentação de dissertação de mestrado e ao orientador, Prof. Dr. Rafael Lopes.
 
-
-%This work was partially supported by CNPq (grants n. 307118/2017-7 and 405642/2016-4). This work is part of the INCT of the Future Internet for Smart Cities (CNPq 465446/2014-0, Coordena\c{c}\~{a}o de Aperfei\c{c}oamento de Pessoal de N\'{i}vel Superior - Brasil (CAPES) - Finance Code 001, and FAPESP 2014/50937-1 and 2015/24485-9).
 
 \end{block}
 
-\begin{block}{Contact}\small
-Email: \{dyego,mardoniovf,thelmo,celestino,rafaellgom\}@larces.uece.br
+\begin{block}{Contato}\small
+Email: dyego@larces.uece.br
 \end{block}
 
 \end{frame}
