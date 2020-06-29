@@ -459,16 +459,19 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \frametitle{Resultados}
 
 \begin{block}{Comparação}
-\begin{itemize} \small
+\begin{itemize} \footnotesize%\small
     \item O \textbf{PRA} é utilizado como etapa anterior à aplicação da técnica de previsão.
     \item Para medir os benefícios do \textbf{PRA} na capacidade de modelagem e predição das técnicas \textbf{ARIMA} e \textbf{NNAR}, comparamos seu desempenho com e sem a aplicação do mesmo.
-    \item A métrica para avaliar a performance da proposta no período \textbf{T} foi a Root Mean Squared Error (RMSE).
+    \item A \textbf{métrica} para avaliar a performance da proposta no período \textbf{T} foi a Root Mean Squared Error (RMSE).
 \end{itemize}
 \end{block}
 
-\begin{block}{\textit{Autocorrelation Function} -
-ACF}
-\begin{itemize} \small
+\begin{equation}
+RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}    
+\end{equation}
+\begin{block}{\textit{Autocorrelation Function} - ACF}
+
+\begin{itemize} \small%\footnotesize
     \item Aplicado a todos os conjuntos de Treinamento;
     \item Aplicado aos Resíduos;
 \end{itemize}
@@ -476,49 +479,25 @@ ACF}
  
 \end{frame}
 
-%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{}
 \begin{frame}
-\frametitle{Results}
-\small
-\begin{block}{Comparison}
-\begin{itemize} \small
-    \item The ANP model is used as previous step to the application of the prediction technique.
-    \item To measure the benefits of the ANP in the modeling and predition capacity of the ARIMA and NNAR techniques, we compare their performance with and without the application of the ANP model. 
-\end{itemize}
-\end{block}
-
-\begin{block}{Metric}
-\begin{itemize} \small
-    \item The metric used to evaluate the performance of the proposal in a period T is the Root Mean Squared Error (RMSE), follows the equation below, where ŷ t is the predicted value and y t is the real values of bandwidth usage in time t.
-\end{itemize}
-
-\begin{equation}
-RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}    
-\end{equation}
-
-\end{block}
-\end{frame}
-
-%%%%%%%%%%%%
-
-\subsection{}
-\begin{frame}
-\frametitle{The ANP model improves the performance of prediction techniques}
+\frametitle{O \textbf{\textit{PRA}} melhora a performance das técnicas de predição}
 \small
 
 \begin{itemize}\footnotesize
- \item ARIMA and NNAR reach high values of RSME in several moments, representing the impact of the elastic demand situation in the prediction capacity of both techniques.
- \item When ARIMA and NNAR techniques are applied together with the proposed ANP model, the performance of both techniques increase (lower prediction errors), reaching similar values.
+ \item Aplicando \textbf{ARIMA} e \textbf{NNAR} juntos com o modelo \textbf{PRA}, a performance das técnicas aumentam e (os erros \textit{RSME} diminuem), alcançando valores similares.
 \end{itemize}
 
-\vspace{-0.2cm}
+\vspace{-0.3cm}%puxar para cima
 
 \centering
 \begin{figure}[!htb]
 \centering
-\includegraphics[height=0.37\textwidth,angle=0]{rmse_PRA_original_juntos-eps-converted-to.pdf}
+\includegraphics[height=0.44\textwidth,angle=0]{rmse_PRA_original_juntos-eps-converted-to.pdf}
 \end{figure}
 
 \end{frame}
@@ -527,14 +506,15 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 
 \subsection{}
 \begin{frame}
-\frametitle{The ANP model favors adaptability to behavioral changes}
+\frametitle{O \textbf{\textit{PRA}} favorece adaptabilidade às mudanças comportamentais}
 \small
 
 \begin{columns}[T] % align columns
 \begin{column}{.4\textwidth}
 \begin{itemize}\footnotesize
-    \item The ANP model can accompany the samples of the time series of the dataset, following the seasonality and amplitude fluctuations, giving the importance of the samples variation (with approximately 2, 4, 6 and 8 weeks)
-    \item Moreover, the ANP model reduced the computational processing for the training phase in around 85\% using ARIMA and 12\% applying NNAR. This fact indicates that the ANP model is capable to reduce the processing time for the prediction techniques, enabling its application in real time prediction scenarios.
+    \item O \textbf{PRA} pode acompanhar amostras da série original, dando importância a variação das amostras (com aproximadamente 2, 4, 6 e 8 semanas).
+    \item A proposta reduz o tempo computacional para processamento dos modelos em cerca de 85\% usando ARIMA e 12\% NNAR. Sugerindo eficiência no processamento dos modelos de forma a permitir sua aplicação em cenários de previsão em tempo real.
+    
 \end{itemize}
 \end{column}%
 
@@ -544,7 +524,7 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \centering
 \begin{figure}[!htb]
 \centering
-\includegraphics[height=0.62\textwidth,angle=0]{melhoresCiclos3_3-eps-converted-to.pdf}
+\includegraphics[height=0.64\textwidth,angle=0]{melhoresCiclos3_3-eps-converted-to.pdf}
 \end{figure}
 \end{column}%
 \end{columns}
@@ -559,7 +539,7 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \subsection{}
 \begin{frame}{Resultados}
     \centering
-\includegraphics[height=0.50\textwidth,angle=0]{rmse_tsoriginal.eps}
+\includegraphics[height=0.47\textwidth,angle=0]{rmse_tsoriginal.eps}
 \end{frame}
 
 
@@ -574,33 +554,45 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 
 %%%%%%%%%%%%
 
-\section{Conclusion}
+\section{Conclusão}
 
 %%%%%%%%%%%%
 
 \subsection{}
 \begin{frame}
-\frametitle{Conclusion e Future Work}
+\frametitle{Conclusão e trabalhos futuros}
 \small
-\begin{block}{Conclusion}
+\begin{block}{Conclusão}
 \begin{itemize} \small
-\item The ISPs tend to evolve to MISPs, in order to deal with situations that can affect the QoS of service delivery.
-\item Problem: improve the existing prediction techniques, turning them in a efficient approach to overcome situations of elastic demand of network resources.
-\item The proposed model, called ANP, is used as previous step to the application of the prediction technique.
-\item The experiments performed show that the model ANP together with a prediction technique evolved the prediction capacity, reducing around 30\% the RMSE error rate.
-\end{itemize}
-\end{block}
-
-\begin{block}{Future Work}
-\begin{itemize} \small
-\item Extend the prediction approach, including issues related to independent variables, which can generate a higher capacity of knowledge about the elastic demand behavior.
+\item Os ISPs tendem a evoluir para MISPs;
+\item O \textbf{PRA} auxilia às demandas dos MISPs;
+\item Aprimora as técnicas existentes, superando situações de demanda elástica por recurso de rede;
+\item A proposta do modelo \textbf{PRA} é usado como etapa prévia a aplicação das técnicas de predição;
+\item Os experimentos mostram que o modelo \textbf{PRA} junto com uma técnica de previsão, evolui a capacidade da mesma, reduzindo as taxas de erro (RMSE) em cerca de 30\%.
+\item Usando ARIMA e NNAR como técnicas de modelagem para previsão, obtêm-se os
+valores de generalização de 87\% e 85\%, respectivamente.
 \end{itemize}
 \end{block}
 
 \end{frame}
 
-%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{frame}{Conclusão}
+    \begin{block}{Trabalhos futuros}
+    \begin{itemize}\setbeamertemplate{itemize items}[square]
+        \item   Ampliação da abordagem de previsão, incluindo variáveis independêndes, que podem gerar maior capacidade de conhecimento sobre o comportamento da rede, explorando o fornecimendo de recursos por demanda elástica de forma eficiente.
+    \end{itemize}
+  
 
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{}
 \begin{frame}
