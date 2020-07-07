@@ -1,5 +1,5 @@
 \documentclass[aspectratio=169]{beamer}
-
+\usepackage{setspace}
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{colortbl}
@@ -85,7 +85,9 @@
 
 \author[Dyego Oliveira]{Dyego Henrique Leonel Oliveira}
 
-\institute{Universidade Estadual do Ceará (UECE)}
+\institute{Universidade Estadual do Ceará -- UECE \\ 
+
+Orientador: Rafael Lopes Gomes}
 
 \date{Julho 2020} 
 
@@ -115,13 +117,13 @@
 % \small
 \begin{block}{Contexto}
     \begin{itemize}
-        \item A Internet tem se tornado uma ferramenta crucial em nossas vidas, pelos serviços modernos de comptuação que operam sobre.
+        \item A Internet tem se tornado uma ferramenta crucial em nossas vidas, pelos serviços modernos de comptuação que operam sobre a rede.
         \item A maioria desses serviços são baseados em:
         \begin{itemize}
             \item Service Level Agreement -- SLA
             \item Internet Access Service -- IAS
         \end{itemize}
-        \item Operando através o Internet Service Provider (ISP)
+        \item Operando através o Internet Service Provider -- ISP
     \end{itemize}
 \end{block}
 
@@ -132,13 +134,13 @@
 \begin{frame}{Introdução}
     \begin{block}{Desafios}
 \begin{itemize}
-    \item Todos os tipos de redes buscam por características tais como:
+    \item Todos os tipos de redes buscam por características como:
     \begin{itemize}\setbeamertemplate{itemize items}[triangle]
         \item baixo atraso;
         \item flexibilidade;
         \item resiliência;
     \end{itemize}
-    \item Pontos necessários para evoluir o gerenciamento de recursos, flexibilidade, bandwidth e poder personalizar o comportamento de infraestruturas das redes.
+    \item Pontos necessários para evoluir o gerenciamento de recursos, flexibilidade, \textit{bandwidth} (\textbf{bw}) e poder personalizar o comportamento de infraestruturas das redes.
 \end{itemize}
 \end{block}
 \end{frame}
@@ -148,12 +150,20 @@
 \begin{frame}
 \frametitle{Introdução}
 % \small
-\begin{block}{MISPs e Demanda Elastica}
+\begin{block}{MISPs e Demanda Elástica}
     \begin{itemize}
-    \item ISPs tendem a evoluir para MISPs (Modern Internet Service Providers), abordando situações como demanda elástica por recursos de rede. 
-    \item Os MISPs precisam expandir ou reduzir dinamicamente a alocação de largura de banda (comportamento elástico), permitindo um IAS adequado sob demanda. Evitando problemas de lentidão, interrupção e desconecções. 
-    \item Uma abordagem promissora para os MISPs são o desenvolvimento de fatias de redes (slices). Cada fatia pode ter a configuração adequada para melhor atender as necessidades do cliente.
-    \item Uma abordagem promisora para lidar com (slices) é o uso de Previsão de Tráfego de Rede.
+    \item \textbf{ISPs} tendem a evoluir para \textbf{MISPs} -- Modern Internet Service Providers, abordando situações como demanda elástica por recursos de rede.
+        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\onehalfspacing
+            \item \textbf{Situação -- Problema:} Os \textit{MISPs} precisam expandir ou reduzir dinamicamente a alocação de \textbf{bw}, comportamento elástico, permitindo um \textbf{IAS} adequado sob demanda.
+            %\singlespacing
+            \item \textbf{Solução -- Slice:} Desenvolvimento de fatias de redes. Cada fatia pode ter a configuração adequada para melhor atender as necessidades do cliente.
+        \end{itemize}
+     
+    \item Uma abordagem promisora para lidar com \textbf{slices} é o uso de Previsão de Tráfego de Rede.
+        \begin{itemize}\setbeamertemplate{itemize items}[square]
+            \item Evitar problemas de \textbf{lentidão}, \textbf{interrupção} e \textbf{desconexões}. 
+            \item Modernizando o oferecimento de acesso a internet.
+        \end{itemize}
     \end{itemize}
 \end{block}
 \end{frame}
@@ -168,8 +178,8 @@
     \begin{itemize}
     \item A análise do histórico de uso dos recursos de rede permite o entendimento do seu comportamento.
         \item Este conhecimento permite a aplicação de tarefas proativas para evitar problemas citados anteriormente e planejar a infraestrutura.
-        \item Os MISPs precisam de um modelo que aprenda o comportamento da rede \textbf{Bandwidth} e auxilie as técnicas de predição nos cenários de (slicing).
-        \item A abordagem seria a -- Previsão de Rede Adaptável -- \textbf{PRA} .
+        \item Os MISPs precisam de um modelo que aprenda o comportamento da rede \textbf{tráfego} e auxilie as técnicas de predição nos cenários de (slicing).
+        \item A abordagem seria: Previsão de Rede Adaptável -- \textbf{PRA} .
     \end{itemize}
 \end{block}
 \end{frame}
@@ -186,14 +196,15 @@
 \begin{block}{Definição}
 
     \begin{itemize}
-        \item Uma sequência de (\textbf{observações}) de uma variável ao longo do tempo.
+        \item Uma sequência de \textbf{observações} de uma variável ao longo do tempo.
         \begin{itemize}\setbeamertemplate{itemize items}[triangle]
             \item ex. Total de tráfego de rede por \textbf{dia}, \textbf{hora} ou \textbf{mês}.
         \end{itemize}
         \item Componentes:
         \begin{itemize}\setbeamertemplate{itemize items}[triangle]
-            \item \underline{total} --> Medida      \item \underline {tráfego de rede} --> Fato
-            \item \underline{por dia} --> Unidade de Tempo.
+            \item \underline{Total} --> Medida
+            \item \underline{Tráfego de rede} --> Fato  \item \underline{por dia} --> Unidade de Tempo.
+                 
         \end{itemize}
         \end{itemize}
     \end{block}  
@@ -223,6 +234,7 @@
 
 
 \begin{frame}{Série Temporal}
+\vspace{-0.3cm}
 \begin{block}{Métrica de Desempenho}
     \begin{itemize}
         \item Hold Out -- os dados são divididos em duas partes não sobrepostas, treinamento e teste.
@@ -230,20 +242,26 @@
     
 \end{block}
     \centering
-\includegraphics[width=0.62\textwidth,angle=0]{holdout.pdf}
-\end{frame}
-
-\begin{frame}{Série Temporal}
+\includegraphics[width=0.42\textwidth,angle=0]{holdout.pdf}\vspace{-0.1cm}
 \begin{block}{Métrica de Erro}
     \begin{itemize}
-        \item erro quadrático médio da raiz (Root Mean Squared Error - RMSE) observa a média quadrática da diferença entre o previsto e o observado.
+        \item Erro quadrático médio da raiz (\textit{Root Mean Squared Error} - RMSE) observa a média quadrática da diferença entre o previsto e o observado.
         \end{itemize}
     
 \end{block}
-\begin{equation}
-RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}    
-\end{equation}
 \end{frame}
+
+%\begin{frame}{Série Temporal}
+%\begin{block}{Métrica de Erro}
+%    \begin{itemize}
+%        \item Erro quadrático médio da raiz (Root Mean Squared Error - RMSE) observa a média quadrática da diferença entre o previsto e o observado.
+%        \end{itemize}
+    
+%\end{block}
+%\begin{equation}
+%RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}    
+%\end{equation}
+%\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -301,33 +319,34 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \begin{frame}{Proposta}
     \begin{block}{Previsão de Rede Adaptável -- PRA}
         \begin{itemize}\small
-            \item O modelo PRA proposto tem por objetivo ajustar o conjunto de dados referente à utilização de \textbf{Bandwidth} para situações de demanda elástica;
+            \item O modelo PRA proposto tem por objetivo ajustar o conjunto de dados referente à utilização de \textbf{bw} para situações de demanda elástica;
             \begin{itemize}\setbeamertemplate{itemize items}[square]\footnotesize
                 \item Etapa prévia a submissão dos dados às Técnicas Preditivas; 
             \end{itemize}
-            \item As técnicas existentes (\textbf{Arima/Neural}), tentam lidar com aspéctos de Sazonalidade e Tendência, não obtendo correções \underline{satisfatórias};
+            \item As técnicas existentes tentam lidar com aspéctos de Sazonalidade e Tendência, não obtendo correções \underline{satisfatórias};
             
             
         \end{itemize}
     \end{block}
+\includegraphics[width=1\textwidth,angle=0]{Modelo-PRA}
     %%%%%%%%%%
-    \begin{block}{Ajustes PRA}
-    \begin{itemize}\small
-        \item Entrada de dados \emph{(bps, Mbps, etc)}
-    
-        \begin{itemize}\setbeamertemplate{itemize items}[triangle]\footnotesize
-            \item Decompõe;
-            \item Remove Ciclos e (irregulares);
-            \item Estacionariedade;
+   % \begin{block}{Ajustes PRA}
+    %\begin{itemize}\small
+     %   \item Entrada de dados \emph{(bps, Mbps, etc)}
+    %
+     %   \begin{itemize}\setbeamertemplate{itemize items}[triangle]\footnotesize
+      %      \item Decompõe;
+       %     \item Remove Ciclos e (irregulares);
+        %    \item Estacionariedade;
             
-        \end{itemize}
-        \item Saída de \textbf{dados} tratados;
+        %\end{itemize}
+        %\item Saída de \textbf{dados} tratados.
         %\begin{itemize}\setbeamertemplate{itemize items}[square]\footnotesize
          %   \item Submissão as técnicas de Predição 
         %\end{itemize}
-        .
-    \end{itemize}
-    \end{block}
+        
+    %\end{itemize}
+    %\end{block}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
@@ -336,19 +355,32 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 
 \begin{frame}
 \frametitle{Modelo PRA -- Decomposição}
-\begin{block}{Comportamento -- PRA}
+%\begin{block}{Comportamento -- PRA}
     \begin{itemize}\small
-    \item Após ser pré-processado pelo \emph{PRA} os dados podem ser submetidos as técnicas de predição, como mostra a figura abaixo. 
+    %\item Após ser pré-processado pelo \emph{PRA} os dados podem ser submetidos as técnicas de predição, como citado. 
     \end{itemize}
+%\end{block}
+\begin{block}{Base de dados}
+    \begin{itemize}
+        \item Os experimentos foram retirados da (UECE), uma base de dados real do consumo de \textbf{Tráfego de Rede}, monitorados por 6 (seis) meses.
+        %\item As técnicas escolhidas para predição foram \textbf{ARIMA} e \textbf{NNAR}.
+        \end{itemize}
 \end{block}
-\centering
-\includegraphics[width=1\textwidth,angle=0]{Modelo-PRA}
-\begin{block}{Execução -- PRA}
+\begin{block}{Características Decomposição}
     \begin{itemize}\small
-    \item Flutuações sazonais e tendência não variando com o nível da Série;
+    \item Flutuações \textbf{sazonais} e \textbf{tendência} não variando com o nível da Série;
     \item Seleção do modelo Aditivo;
     \end{itemize}
-\end{block}
+\end{block}%\vspace{-0.1cm}
+
+%\centering
+%\includegraphics[width=1\textwidth,angle=0]{Modelo-PRA}
+%\begin{block}{Execução -- PRA}
+%    \begin{itemize}\small
+%    \item Flutuações sazonais e tendência não variando com o nível da Série;
+%    \item Seleção do modelo Aditivo;
+%    \end{itemize}
+%\end{block}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -357,17 +389,13 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \subsection{}
 \begin{frame}
 \frametitle{Sequência PRA -- Ciclos}
-\begin{block}{Execução -- PRA}
-    \begin{itemize}
-        \item Os experimentos foram retirados da (UECE), uma base de dados real do consumo \textbf{Bandwidth}, monitorados por 6 (seis) meses.
-        \item As técnicas escolhidas para predição foram \textbf{ARIMA} e \textbf{NNAR}.
-        \end{itemize}
-\end{block}
- \begin{block}{Execução -- PRA}
+\vspace{-0.1cm}
+\vspace{-0.1cm}
+ \begin{block}{Ajustes -- Ciclos}
         \begin{itemize}\setbeamertemplate{itemize items}[triangle]
             \item Média móvel de ordem \emph{24} é aplicado para analisar a tendência;
-            \item Aplicação ao algoritmo de remoção de ciclos (amostras de baixa amplitude);
-            \item Decomposição sazonal e de tendência usando Loess (STL).
+            \item Aplicação ao algoritmo de remoção de ciclos às amostras de baixa amplitude;
+            \item Decomposição sazonal e de tendência usando Loess -- STL.
         \end{itemize}
         \end{block}
 \end{frame}
@@ -376,21 +404,21 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{}
-\begin{frame}
-\frametitle{Proposta}
+%\subsection{}
+%\begin{frame}
+%\frametitle{Proposta}
 
-        \centering
-\includegraphics[width=0.7\textwidth,angle=0]{myts_avg_eps.eps}
-\end{frame}
+%        \centering
+%\includegraphics[width=0.7\textwidth,angle=0]{myts_avg_eps.eps}
+%\end{frame}
 %%%%%%%%%%
-\subsection{}
-\begin{frame}
-\frametitle{Proposta}
+%\subsection{}
+%\begin{frame}
+%\frametitle{Proposta}
 
-        \centering
-\includegraphics[width=0.7\textwidth,angle=0]{mytsClean.eps}
-\end{frame}
+%        \centering
+%\includegraphics[width=0.7\textwidth,angle=0]{mytsClean.eps}
+%\end{frame}
 
 \subsection{}
 \begin{frame}
@@ -416,7 +444,7 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \begin{block}{Treinando e testando as amostras}
 \begin{itemize} \small
     \item A técnica de Validação Cruzada de Série Temporal (TSCV) foi aplicado aos dados;
-    \item O método \textbf{\textit{Hold Out}} foi usado para selecionar os subconjuntos de Treinamento e Teste.
+    \item O método \textbf{\textit{Hold Out}} foi usado para selecionar os subconjuntos de \textbf{Treinamento} e \textbf{Teste}.
     \item Foi aplicado às primeiras 72 amostras como conjunto de treinamento, às segundas 144 amostras para o treinamento e assim por diante (72, 144, 216,...).
 \end{itemize}
 \end{block}
@@ -428,14 +456,14 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \subsection{}
 \begin{frame}
 \frametitle{Sequência PRA -- Estacionariedade}
-\begin{block}{Execução -- PRA}
+\begin{block}{Execução -- PRA}\onehalfspacing
     \begin{itemize}
-        \item Verificar Comportamento a longo prazo;
-        \item Série pode apresentar mudança de nível (inclinações etc.)
+        \item Verificar comportamento do \textbf{tráfego de rede} a longo prazo;
+        \item Série pode apresentar mudança de nível; inclinações etc.
         \item Não interferir na capacidade de predição das técnicas;
             \begin{itemize}\setbeamertemplate{itemize items}[triangle]
-                \item \textbf{Kwiatkowski-Phillips-Schmidt-Shin} -- (KPSS)
-                \item \textbf{Argumented Dickey-Fuller} (DICKEY-FULLER)
+                \item \textbf{Kwiatkowski-Phillips-Schmidt-Shin} -- KPSS
+                \item \textbf{Argumented Dickey-Fuller} DICKEY-FULLER
                     \begin{itemize}\setbeamertemplate{itemize items}[square]
                     \item Aplicação de direrenciações;
                         \begin{equation}
@@ -513,7 +541,7 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 \begin{column}{.4\textwidth}
 \begin{itemize}\footnotesize
     \item O \textbf{PRA} pode acompanhar amostras da série original, dando importância a variação das amostras (com aproximadamente 2, 4, 6 e 8 semanas).
-    \item A proposta reduz o tempo computacional para processamento dos modelos em cerca de 85\% usando ARIMA e 12\% NNAR. Sugerindo eficiência no processamento dos modelos de forma a permitir sua aplicação em cenários de previsão em tempo real.
+    \item A proposta reduz o tempo computacional para processamento dos modelos em cerca de 85\% usando ARIMA e 12\% NNAR. Sugerindo eficiência no processamento dos modelos de forma a permitir sua aplicação em \textbf{cenários de previsão em tempo real}.
     
 \end{itemize}
 \end{column}%
@@ -536,18 +564,18 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{}
-\begin{frame}{Resultados}
-    \centering
-\includegraphics[height=0.47\textwidth,angle=0]{rmse_tsoriginal.eps}
-\end{frame}
+%\subsection{}
+%\begin{frame}{Resultados}
+%    \centering
+%\includegraphics[height=0.47\textwidth,angle=0]{rmse_tsoriginal.eps}
+%\end{frame}
 
 
-\subsection{}
-\begin{frame}{Resultados}
-    \centering
-\includegraphics[height=0.50\textwidth,angle=0]{rmse_tsclean.eps}
-\end{frame}
+%\subsection{}
+%\begin{frame}{Resultados}
+%    \centering
+%\includegraphics[height=0.50\textwidth,angle=0]{rmse_tsclean.eps}
+%\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -560,15 +588,15 @@ RMSE(T) = \frac{1}{\sqrt{T}} (\sum_{t=1}^{T} (\hat{y}_t - y_t)^2)^\frac{1}{2}
 
 \subsection{}
 \begin{frame}
-\frametitle{Conclusão e trabalhos futuros}
+\frametitle{}
 \small
 \begin{block}{Conclusão}
 \begin{itemize} \small
-\item Os ISPs tendem a evoluir para MISPs;
-\item O \textbf{PRA} auxilia às demandas dos MISPs;
+\item Os ISPs tendem a evoluir para \textbf{MISPs};
+\item O \textbf{PRA} auxilia às demandas dos \textbf{MISPs};
 \item Aprimora as técnicas existentes, superando situações de demanda elástica por recurso de rede;
 \item A proposta do modelo \textbf{PRA} é usado como etapa prévia a aplicação das técnicas de predição;
-\item Os experimentos mostram que o modelo \textbf{PRA} junto com uma técnica de previsão, evolui a capacidade da mesma, reduzindo as taxas de erro (RMSE) em cerca de 30\%.
+\item Os experimentos mostram que o modelo \textbf{PRA} junto com uma técnica de previsão, evolui a capacidade da mesma, reduzindo as taxas de erro \textit{\textbf{RMSE}} em cerca de 30\%.
 \item Usando ARIMA e NNAR como técnicas de modelagem para previsão, obtêm-se os
 valores de generalização de 87\% e 85\%, respectivamente.
 \end{itemize}
@@ -580,13 +608,22 @@ valores de generalização de 87\% e 85\%, respectivamente.
 %-------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
-\begin{frame}{Conclusão}
+\begin{frame}{Conclusão e trabalhos futuros}\vspace{-0.2cm}
     \begin{block}{Trabalhos futuros}
-    \begin{itemize}\setbeamertemplate{itemize items}[square]
+    \begin{itemize}\setbeamertemplate{itemize items}[]
         \item   Ampliação da abordagem de previsão, incluindo variáveis independêndes, que podem gerar maior capacidade de conhecimento sobre o comportamento da rede, explorando o fornecimendo de recursos por demanda elástica de forma eficiente.
     \end{itemize}
-  
-
+ \end{block}
+ \begin{block}{Aceitos para publicação}
+\begin{itemize}\setbeamertemplate{itemize items}[triangle]\footnotesize
+    \item Modelo Adaptativo para Previsão de Recursos de Rede em Provedores de Internet Modernos. \textbf{XXV} Workshop de Gerência e Operação de Redes e Serviços -- WGRS, \textbf{SBRC}. QUALIS \textbf{B4}
+    \item Adaptive Model for Network Resources Prediction in Modern Internet Service Providers. In: IEEE Symposium on Computers and Communications -- \textbf{ISCC}. QUALIS \textbf{A2}
+\end{itemize}
+\end{block}
+\begin{block}{Submetidos}\footnotesize
+\begin{itemize}\setbeamertemplate{itemize items}[square]
+    \item An Adaptive Forecasting Model for Slices Allocation in Softwarized Networks. \textbf{IEEE} Transactions on Network and Service Management. \textbf{FI} 4.682
+\end{itemize}
 \end{block}
 \end{frame}
 
